@@ -3,17 +3,10 @@ services:
   react:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+     - '80:80'
     volumes:
-      - /usr/src/app/node_modules # 제외할 경로
-      - ./:/usr/src/app # 참조할 경로
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /usr/src/app/node_modules # 제외할 경로
-      - ./:/usr/src/app # 참조할 경로
-    command: ["npm", "run", "test"]
+     - /usr/src/app/node_modules
+     - ./:/usr/src/app
+    stdin_open: true
